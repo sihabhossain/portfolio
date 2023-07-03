@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { Toaster, toast } from "react-hot-toast";
 
 const Contact = () => {
   const form = useRef();
@@ -15,7 +16,7 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          toast.success("Email sent successfully");
           form.reset();
         },
         (error) => {
@@ -25,6 +26,7 @@ const Contact = () => {
   };
   return (
     <section id="contact" className="pb-16 mt-40">
+      <Toaster />
       <div className="container">
         <h2 className="text-headingColor font-[700] text-[2.5rem] mb-8">
           Get in touch
